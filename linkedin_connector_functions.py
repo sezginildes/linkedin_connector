@@ -74,7 +74,7 @@ def next_page(driver):
     next_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Next"]')
     next_btn.click()
 
-def connector_pipe_line(url, e_mail, password, PATH, message=False):
+def connector_pipe_line(url, e_mail, password, PATH, message=False, headless=True, limit=50):
     '''
     Function to automates the process of logging in to LinkedIn, connecting with people, and navigating through search results or content pages.
 
@@ -84,16 +84,24 @@ def connector_pipe_line(url, e_mail, password, PATH, message=False):
     e_mail: str (representing the email or username that you want to input into the login form.)
     password: str (representing the password that you want to input into the login form.)
     message (optional): srt, optional (Allows you to provide a custom message to send along with the connection request. If not provided, it defaults to False.)
+    headless: boolean (represents driver option. If True opens driver in background)
+    limit: int (represents invitation limit. E.g. if it's 50 the script will send 50 invitation)
     '''
     # Options for selenium driver
     op = webdriver.ChromeOptions()
-    #op.add_argument("--headless")
+    if headless:
+        op.add_argument("--headless")
 
     linkedin_driver = webdriver.Chrome(PATH, options=op)
     linkedin_driver.get(url)
 
     login(linkedin_driver, e_mail, password)
 
-    for i in range(1, 100):
+    count = 0
+
+    while count <= limit:
         connect(linkedin_driver, message)
+        count += 10
         next_page(linkedin_driver)
+        print("Invitation progress completed!")
+        linkedin_driver.close()
