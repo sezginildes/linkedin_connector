@@ -53,6 +53,6 @@ lcf.connector_pipe_line(
     <br>login_link=<login_link>,
     <br>search_link=<search_link>,
     <br>PATH='chromedriver.exe',
-    <br>message='Hello, I work as a data scientist/AI developer in cyber security sector. I would like to connect with you.',\ 
+    <br>message='Hello, I work as a data scientist/AI developer in cyber security sector. I would like to connect with you.',
     <br>limit=100,
     <br>headless=False)
