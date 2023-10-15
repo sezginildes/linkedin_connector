@@ -36,23 +36,23 @@ There are several function within linkedin_connector_functions.py but you can us
 import linkedin_connector_functions as lcf
 
 lcf.connector_pipe_line(
-    login_link=<login_link>,
-    search_link=<search_link>, 
-    PATH='chromedriver.exe', 
-    message='chatgpt', 
-    my_informations="\n- Working as Data Scientist\n- Doing masters at Big Data\n- Doing traineeship at BME\n- My name: Talha",
-    openai_key=<openai_key>,
-    limit=100,
-    headless=False)
+    <br>login_link=<login_link>,
+    <br>search_link=<search_link>,
+    <br>PATH='chromedriver.exe',
+    <br>message='chatgpt', 
+    <br>my_informations="\n- Working as Data Scientist\n- Doing masters at Big Data\n- Doing traineeship at BME\n- My name: Talha",
+    <br>openai_key=<openai_key>,
+    <br>limit=100,
+    <br>headless=False)
 
 <strong>Without chatgpt</strong>:
 
 import linkedin_connector_functions as lcf
 
 lcf.connector_pipe_line(
-    login_link=<login_link>,
-    search_link=<search_link>, 
-    PATH='chromedriver.exe', 
-    message='Hello, I work as a data scientist/AI developer in cyber security sector. I would like to connect with you.', 
-    limit=100,
-    headless=False)
+    <br>login_link=<login_link>,
+    <br>search_link=<search_link>,
+    <br>PATH='chromedriver.exe',
+    <br>message='Hello, I work as a data scientist/AI developer in cyber security sector. I would like to connect with you.',\ 
+    <br>limit=100,
+    <br>headless=False)
