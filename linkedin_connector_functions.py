@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
@@ -111,48 +111,52 @@ def connect(driver, message=False, openai_key="None", my_informations="None"):
         return
 
     for peep in people:
-        connect_btn = peep.find_element(By.TAG_NAME, 'button')
-        
-        if connect_btn.text == "Connect":
+        try:
+            connect_btn = peep.find_element(By.TAG_NAME, 'button')
+            
+            if connect_btn.text == "Connect":
 
-            if message == "chatgpt":
-                    answer = anlyze_profile(driver, peep, informations=my_informations, key=openai_key)
-
-            message_bubbles = driver.find_elements(By.CSS_SELECTOR, 'div[aria-label="Messaging"]')
-            for bubble in message_bubbles:
-                close = bubble.find_element(By.TAG_NAME, "button")
-                close.click()
-
-            connect_btn.click()
-
-            try:
                 if message == "chatgpt":
-                    note_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Add a note"]')
-                    note_btn.click()
-                    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'textarea[name="message"]')))
-                    text_area = driver.find_element(By.CSS_SELECTOR, 'textarea[name="message"]')
-                    text_area.send_keys(answer)
-                    time.sleep(2)
-                elif message:
-                    note_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Add a note"]')
-                    note_btn.click()
-                    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'textarea[name="message"]')))
-                    text_area = driver.find_element(By.CSS_SELECTOR, 'textarea[name="message"]')
-                    text_area.send_keys(message)
+                        answer = anlyze_profile(driver, peep, informations=my_informations, key=openai_key)
 
-                send_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label = "Send now"]')
-                if 'disabled' not in send_btn.get_attribute('class'):
-                    send_btn.click()
-                #TODO: If disabled make a new aswer with chatgpt. Rather than close the window.
-                else:
+                message_bubbles = driver.find_elements(By.CSS_SELECTOR, 'div[aria-label="Messaging"]')
+                for bubble in message_bubbles:
+                    close = bubble.find_element(By.TAG_NAME, "button")
+                    close.click()
+
+                connect_btn.click()
+
+                try:
+                    if message == "chatgpt":
+                        note_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Add a note"]')
+                        note_btn.click()
+                        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'textarea[name="message"]')))
+                        text_area = driver.find_element(By.CSS_SELECTOR, 'textarea[name="message"]')
+                        text_area.send_keys(answer)
+
+                    elif message:
+                        note_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Add a note"]')
+                        note_btn.click()
+                        WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'textarea[name="message"]')))
+                        text_area = driver.find_element(By.CSS_SELECTOR, 'textarea[name="message"]')
+                        text_area.send_keys(message)
+
+                    send_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label = "Send now"]')
+                    if 'disabled' not in send_btn.get_attribute('class'):
+                        send_btn.click()
+                    #TODO: If disabled make a new aswer with chatgpt. Rather than close the window.
+                    else:
+                        close_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Dismiss"]')
+                        close_btn.click()
+
+                except:
                     close_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Dismiss"]')
                     close_btn.click()
 
-            except:
-                close_btn = driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Dismiss"]')
-                close_btn.click()
+            else:
+                continue
 
-        else:
+        except NoSuchElementException:
             continue
 
 def next_page(driver):
