@@ -41,7 +41,7 @@ lcf.connector_pipe_line(
     <br>PATH='chromedriver.exe',
     <br>message='chatgpt', 
     <br>my_informations="\n- Working as Data Scientist\n- Doing masters at Big Data\n- Doing traineeship at BME\n- My name: Talha",
-    <br>openai_key=<openai_key>,
+    <br>openai_key=<openai_api_key>,
     <br>limit=100,
     <br>headless=False)
 
