@@ -180,7 +180,7 @@ def connector_pipe_line(login_link, search_link, PATH, message=False, headless=T
     password: str (representing the password that you want to input into the login form.)
     message (optional): str, optional (Allows you to provide a custom message to send along with the connection request. If not provided, it defaults to False. If it's defined as chatgpt it will send a message based on the profile of target.)
     headless: boolean (represents driver option. If True opens driver in background)
-    limit: int (represents invitation limit. E.g. if it's 50 the script will send 50 invitation)
+    limit: int (represents page limit. E.g. if it's 5 the script will send 5 pages of invitation)
     openai_key (optional): str, optional (Needed api key for chatgpt function, needed for sending targeted notes while connecting by using chatgpt)
     my_informations (optional): str, optional (Your Linkedin profile informations, needed for sending targeted notes while connecting by using chatgpt)
     '''
@@ -196,10 +196,12 @@ def connector_pipe_line(login_link, search_link, PATH, message=False, headless=T
 
     count = 0
 
+    #TODO: Limit part will be updated
     while count <= limit:
         connect(linkedin_driver, message, openai_key, my_informations)
-        count += 10
         next_page(linkedin_driver)
-        print("Invitation progress completed!")
+        count += 1
+    
+    print("Invitation progress completed!")
 
     linkedin_driver.close()
