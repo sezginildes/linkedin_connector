@@ -3,7 +3,8 @@
 Automatically connect with people on LinkedIn by creating targeted notes using ChatGPT.
 
 ## Requirements
-- Selenium chrome driver compatible with google chrome you're using.
+- LinkedIn account language must be in english
+- Selenium chrome driver compatible with google chrome you're using
 - Selenium library
 - Openai library
 - Openai API (If you want to use ChatGPT feature of the script)
