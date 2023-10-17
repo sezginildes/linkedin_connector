@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementClickInterceptedException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
@@ -124,7 +124,12 @@ def connect(driver, message=False, openai_key="None", my_informations="None"):
                     close = bubble.find_element(By.TAG_NAME, "button")
                     close.click()
 
-                connect_btn.click()
+                try:
+                    connect_btn.click()
+                except ElementClickInterceptedException:
+                    driver.find_element(By.CSS_SELECTOR, 'button[aria-label="Got it"]').click()
+                    connect_btn.click()
+
 
                 try:
                     if message == "chatgpt":
