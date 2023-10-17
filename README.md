@@ -10,7 +10,7 @@ Automatically connect with people on LinkedIn by creating targeted notes using C
 - Openai API (If you want to use ChatGPT feature of the script)
 
 ## Installation
-1. You can install this repo by cloning it (git clone https://github.com/talha002/linkedin_connector.git) or download it as WinRAR.
+1. You can install this repo by cloning it (git clone https://github.com/talha002/linkedin_connector.git) or download it as zip file.
 2. Chrome driver within repo is compatible with 117. If you're using higher or lower version you can check compatible chrome driver from [here](https://googlechromelabs.github.io/chrome-for-testing/).
 3. You can install libraries by using requirement.txt (pip install -r requirements.txt)
 4. For Openai API you can checkout how you can get it, from [here](https://www.maisieai.com/help/how-to-get-an-openai-api-key-for-chatgpt).
