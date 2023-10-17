@@ -27,8 +27,8 @@ There are several function within linkedin_connector_functions.py but you can us
 - PATH: str (represents the path to the Chrome WebDriver executable.)
 - search_link: str (represents the LinkedIn page which consists of people you wish to connect)
 - message (optional): str, optional, default False (Allows you to provide a custom message to send along with the connection request. If not provided, it defaults to False. If it's defined as chatgpt it will send a message based on the profile of target.)
-- headless: boolean, default True (represents driver option. If False opens driver in background)
-- limit: int, default 50 (represents invitation limit. E.g. if it's 50 the script will send 50 invitation)
+- headless: boolean, default True (represents driver option. If True opens driver as background process, if False directly opens chrome browser and starts the process.)
+- limit: int, default 50 (represents page limit. E.g. if it's 50 the script will send 50 pages of invitation)
 - openai_key (optional): str, optional, default None (Needed api key for chatgpt function, needed for sending targeted notes while connecting by using chatgpt)
 - my_informations (optional): str, optional, default None (Your Linkedin profile informations, needed for sending targeted notes while connecting by using chatgpt)
 
@@ -47,7 +47,7 @@ lcf.connector_pipe_line(
     <br>message='chatgpt', 
     <br>my_informations="\n- Working as Data Scientist\n- Doing masters at Big Data\n- Doing traineeship at BME\n- My name: Talha",
     <br>openai_key=<openai_api_key>,
-    <br>limit=100,
+    <br>limit=20,
     <br>headless=False)
 
 <strong>Without chatgpt</strong>:
@@ -59,5 +59,5 @@ lcf.connector_pipe_line(
     <br>search_link=<search_link>,
     <br>PATH='chromedriver.exe',
     <br>message='Hello, I work as a data scientist/AI developer in cyber security sector. I would like to connect with you.',
-    <br>limit=100,
+    <br>limit=20,
     <br>headless=False)
