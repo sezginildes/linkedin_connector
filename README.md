@@ -4,20 +4,22 @@ Automatically connect with people on LinkedIn by creating targeted notes using C
 
 ## Requirements
 - LinkedIn account language must be in english
-- Selenium chrome driver compatible with google chrome you're using
+- Google Chrome
+- Selenium chrome driver compatible with google chrome version you're using
 - Selenium library
 - Openai library
-- Openai API (If you want to use ChatGPT feature of the script)
+- Openai API key (If you want to use ChatGPT feature of the script)
 
 ## Installation
 1. You can install this repo by cloning it (git clone https://github.com/talha002/linkedin_connector.git) or download it as zip file.
-2. Chrome driver within repo is compatible with 117. If you're using higher or lower version you can check compatible chrome driver from [here](https://googlechromelabs.github.io/chrome-for-testing/).
-3. You can install libraries by using requirement.txt (pip install -r requirements.txt)
-4. For Openai API you can checkout how you can get it, from [here](https://www.maisieai.com/help/how-to-get-an-openai-api-key-for-chatgpt).
+2. Install Google Chrome.
+3. Chrome driver within repo is compatible with chrome version of 117. If you're using higher or lower chrome version you can check compatible chrome driver from [here](https://googlechromelabs.github.io/chrome-for-testing/).
+4. You can install libraries by using requirement.txt (pip install -r requirements.txt)
+5. For Openai API key, you can checkout how to get one from [here](https://www.maisieai.com/help/how-to-get-an-openai-api-key-for-chatgpt).
 
 ## Usage
 
-There are several function within linkedin_connector_functions.py but you can use connector_pipe_line function to connect people. You can import the function by creating new python script within dowloanded or installed folder and import connector_pipe_line.
+There are several function within linkedin_connector_functions.py but you can use connector_pipe_line function to connect with people. You can import the function by creating new python script within installed folder and import connector_pipe_line from linkedin_connector_functions.py.
 
 ### Parameters
 - login_link: str (represents the single use login link required for the script to connect to your account. You can get one from sing-in page of LinkedIn or from [here](https://www.linkedin.com/ssr-login/request-otp-generation).)
