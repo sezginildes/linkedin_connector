@@ -32,7 +32,7 @@ There are several function within linkedin_connector_functions.py but you can us
 
 ### Usage Example
 
-<strong>Video</strong>: [https://youtu.be/-iY9VB7XOh4]
+<strong>Video</strong>: https://youtu.be/-iY9VB7XOh4
 
 <strong>With chatgpt</strong>:
 
